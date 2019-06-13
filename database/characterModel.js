@@ -8,11 +8,11 @@ const characterSchema = new Schema({
     required: true
   },
   height: {
-    type: Number,
+    type: String,
     required: false
   },
   mass: {
-    type: Number,
+    type: String,
     required: false
   },
   hair_color: {

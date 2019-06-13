@@ -1,4 +1,4 @@
-const characterSchema = require('./character');
+const characterSchema = require('./characterModel');
 
 function characterMethods() {
   const Characters = characterSchema('character');
@@ -11,8 +11,8 @@ function characterMethods() {
       hair_color: char.hair_color,
       skin_color: char.skin_color,
       eye_color: char.eye_color,
-      birth_year: char.gender,
-      gender: char.height,
+      birth_year: char.birth_year,
+      gender: char.gender,
       homeworld: char.homeworld,
       films: char.films,
       species: char.species,
@@ -32,4 +32,4 @@ function characterMethods() {
   return { addCharacter };
 }
 
-module.exports = characterMethods;
+module.exports = characterMethods();
