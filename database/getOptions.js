@@ -19,6 +19,18 @@ async function getOptions(fields) {
     });
   });
 
+  Object.entries(options).forEach(option => {
+    if (option[0] === 'birth_year') {
+      option[1].sort((a, b) => {
+        const date1 = a.slice(0, -3);
+        const date2 = b.slice(0, -3);
+        return date1 - date2;
+      });
+    } else {
+      option[1].sort();
+    }
+  });
+
   return options;
 }
 
