@@ -1,8 +1,81 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.characters-bg {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+  background: url('../images/characters-bg.jpg') no-repeat center center/cover;
+  height: 100vh;
 }
 
-a {
-  color: #00B7FF;
+.btn {
+  min-width: 60px;
+  max-width: 150px;
+  font-size: 15px;
+}
+
+.bg-a {
+  background: rgb(241, 105, 56);
+  color: #fff;
+}
+
+.form-bg {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background: url('../images/form-bg.jpg') no-repeat center center/cover;
+  height: 100vh;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.characters__wrapper {
+  display: grid;
+  justify-content: space-around;
+}
+
+.oneChar {
+  min-width: 200px;
+  background-color: rgba(255, 123, 0, 0.2);
+  margin: 0 15px;
+  display: grid;
+  border-bottom: 1.3px solid #e1e1e1;
+  padding: 20px 0;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: auto;
+  text-align: left;
+  font-size: 20px;
+  color: rgb(22, 20, 20);
+}
+
+.oneChar div {
+  margin-left: 10px;
+  color: antiquewhite;
+}
+
+.oneChar span {
+  font-weight: 600;
+  color: rgb(7, 0, 0);
+}
+
+.char-img {
+  grid-column-start: 3;
+  grid-row-start: 1;
+  grid-row-end: 7;
+}
+
+@media all and (max-width: 640px) {
+  .char-img {
+    display: none;
+  }
+
+  .oneChar {
+    grid-template-columns: 1fr 4fr;
+  }
+
+  .oneChar {
+    font-size: 14px;
+  }
 }
