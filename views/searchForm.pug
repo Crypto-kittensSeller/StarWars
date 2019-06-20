@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  section.row.form-bg
+    div.col-sm-3
+      h1= header
+
+      form.form(method='GET' action='/characters')
+        div.form-group
+          label(for='birth_year') Birth year:
+          select#name.form-control(name='birth_year')
+            option(value='all' selected) All years
+            each option in options.birth_year
+              option(value=option) #{option}
+        div.form-group
+          label(for='gender') Gender:
+          select#name.form-control(name='gender')
+            option(value='all' selected) All genders
+            each option in options.gender
+              option(value=option) #{option}
+        div.form-group
+          label(for='homeworld') Homeworld:
+          select#name.form-control(name='homeworld')
+            option(value='all' selected) All homeworlds
+            each option in options.homeworld
+              option(value=option) #{option}
+        div.form-group
+          label(for='hair_color') Hair color:
+          select#name.form-control(name='hair_color')
+            option(value='all' selected) All colors
+            each option in options.hair_color
+              option(value=option) #{option}
+        div.form-group
+          label(for='skin_color') Skin color:
+          select#name.form-control(name='skin_color')
+            option(value='all' selected) All colors
+            each option in options.skin_color
+              option(value=option) #{option}
+        div.form-group
+          label(for='eye_color') Eye color:
+          select#name.form-control(name='eye_color')
+            option(value='all' selected) All colors
+            each option in options.eye_color
+              option(value=option) #{option}
+        button.btn.btn-warning(type='submit') Find
+
+  
+
+      if errors 
+        ul
+          for error in errors
+            li!= error.msg
+
+
