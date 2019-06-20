@@ -4,15 +4,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const connectDB = require('./config/db.js');
-const getSwapiData = require('./database/getSwapiData');
-const indexRouter = require('./routes/index');
+const updateDBfromSwapi = require('./database/updateDBfromSwapi');
+const formRouter = require('./routes/searchForm');
 const charactersRouter = require('./routes/characters');
 
 const app = express();
 
 // connect mongo database
 connectDB();
-getSwapiData();
+updateDBfromSwapi();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', formRouter);
 app.use('/characters', charactersRouter);
 
 // catch 404 and forward to error handler

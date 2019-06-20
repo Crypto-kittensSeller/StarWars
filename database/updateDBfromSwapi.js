@@ -1,7 +1,7 @@
 const axios = require('axios');
-const charController = require('./characterMethods');
+const charController = require('./characterController');
 
-async function getData() {
+async function updateDB() {
   try {
     let nextData = true;
     let url = 'http://swapi.co/api/people';
@@ -28,4 +28,4 @@ async function getData() {
   }
 }
 
-module.exports = getData;
+module.exports = updateDB;
