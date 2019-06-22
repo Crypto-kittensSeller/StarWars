@@ -33,7 +33,7 @@ function characterController() {
     return Characters.find({}, fields).exec();
   };
 
-  const querySearch = (query, fields = null) => {
+  const querySearch = (query, page) => {
     const sanitizedQuery = Object.assign({}, query);
 
     Object.entries(sanitizedQuery).forEach(condition => {
@@ -41,8 +41,12 @@ function characterController() {
         delete sanitizedQuery[condition[0]];
       }
     });
+    const options = {
+      page: page || 1,
+      limit: 3
+    };
 
-    return Characters.find(sanitizedQuery, fields).exec();
+    return Characters.paginate(sanitizedQuery, options);
   };
 
   return { addCharacter, getAllCharacters, querySearch };

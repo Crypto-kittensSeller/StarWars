@@ -2,30 +2,51 @@ extends layout
 
 block content
   section.row.characters-bg
-    a(class="bg-a btn" href="/") Back to Search
-    div.characters__wrapper
-      div.header__wrapper 
-        h1=header
-      div
-        if chars.length
-          each char in chars
-            div.oneChar
-              div.char-img
-                img(src=`https://robohash.org/${char.name}` width='200px' alt='avatar')
-              span Name:
-              div #{char.name}
-              span Birth year:
-              div #{char.birth_year}
-              span Homeworld:
-              div #{char.homeworld}
-              span Gender:
-              div #{char.gender}
-              span Eye_color:
-              div #{char.eye_color}
-              span Hair_color:
-              div #{char.hair_color}
-              span Skin_color:
-              div #{char.skin_color}
-            div
-        else
-          div There are no characters.
+    div.main
+      div.characters__wrapper
+        div.header__wrapper
+          div.return-btn
+            a(class="bg-a btn" href="/") Back to Search
+          div.header
+            h1=header
+        div
+          if chars.length
+            each char in chars
+              div.oneChar
+                div.char-img
+                  img(src=`https://robohash.org/${char.name}` width='200px' alt='avatar')
+                span Name:
+                div #{char.name}
+                span Birth year:
+                div #{char.birth_year}
+                span Homeworld:
+                div #{char.homeworld}
+                span Gender:
+                div #{char.gender}
+                span Eye_color:
+                div #{char.eye_color}
+                span Hair_color:
+                div #{char.hair_color}
+                span Skin_color:
+                div #{char.skin_color}
+              div
+      div.pagination__wrapper
+        if page_count > 1
+          ul.pagination
+            if currentPage > 1
+              li
+                a(class='prev-next-btn fa fa-fast-backward' href=`/characters/1?${queryString}`)
+              li
+                a(class='prev-next-btn fa fa-step-backward' href=`/characters/${+currentPage - 1}?${queryString}`)
+            each page in pages
+              if page === +currentPage
+                li
+                  a(class='pagin-btn-active' href=`/characters/${page}?${queryString}`)=page
+              else
+                li
+                  a(class='pagin-btn' href=`/characters/${page}?${queryString}`)=page
+            if currentPage < page_count
+              li
+                a(class='prev-next-btn fa fa-step-forward' href=`/characters/${+currentPage + 1}?${queryString}`)
+              li
+                a(class='prev-next-btn fa fa-fast-forward' href=`/characters/${page_count}?${queryString}`)
