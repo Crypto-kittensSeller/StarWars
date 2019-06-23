@@ -2,8 +2,9 @@ extends layout
 
 block content
   section.row.form-bg
-    div.col-sm-3
-      h1= header
+    div.col-sm-3.flex-col
+      div.header
+        h1= header
 
       form.form(method='GET' action='/characters/1')
         div.form-group
@@ -42,7 +43,8 @@ block content
             option(value='all' selected) All colors
             each option in options.eye_color
               option(value=option) #{option}
-        button.btn.btn-warning(type='submit') Find
+        div.btn-find__wrapper 
+          button.btn.btn-success(type='submit') Find
 
   
 
