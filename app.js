@@ -10,9 +10,10 @@ const charactersRouter = require('./routes/characters');
 
 const app = express();
 
-// connect mongo database
+// connect mongo database and update it from Swapi
 connectDB();
-updateDBfromSwapi();
+//updateDBfromSwapi();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

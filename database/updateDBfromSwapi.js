@@ -10,6 +10,10 @@ async function updateDB() {
 
       for (char of res.data.results) {
         try {
+          if (char.homeworld) {
+            const planet = await axios.get(char.homeworld);
+            char.homeworld = planet.data.name;
+          }
           await charController.addCharacter(char);
         } catch (err) {
           console.error(err.message);
