@@ -7,6 +7,7 @@ const connectDB = require('./config/db.js');
 const updateDBfromSwapi = require('./database/updateDBfromSwapi');
 const formRouter = require('./routes/searchForm');
 const charactersRouter = require('./routes/characters');
+const compression = require('compression');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', formRouter);
